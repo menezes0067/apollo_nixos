@@ -33,9 +33,6 @@
       waybar
       helix 
       bzmenu
-
-      ## LSP
-      nixd
     ]) ++ (with inputs.niri-flake.packages.${pkgs.stdenv.hostPlatform.system}; [
       xwayland-satellite-stable
     ]); 
