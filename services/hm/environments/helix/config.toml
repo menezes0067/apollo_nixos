@@ -1,0 +1,63 @@
+theme = "everblush"
+
+[editor]
+mouse = true
+end-of-line-diagnostics = "hint"
+line-number = "relative"
+
+[editor.statusline]
+left = ["mode", "spinner", "file-type"]
+center = ["file-name", "file-modification-indicator", "version-control"]
+right = ["diagnostics", "selections", "position", "file-encoding", "file-line-ending"]
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+diagnostics = ["warning", "error"]
+workspace-diagnostics = ["warning", "error"]
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.indent-guides]
+render = true
+character = "┊" # Some characters that work well: "▏", "┆", "┊", "⸽"
+skip-levels = 1
+
+[keys.insert]
+"C-c" = "normal_mode"
+"C-s" = ":w"
+
+[keys.select]
+"C-c" = "normal_mode"
+
+[keys.normal]
+"C-s" = ":w"
+"C-q" = ":wqa!"
+
+# Move line up and down
+"C-j" = [
+  "extend_to_line_bounds",
+  "delete_selection",
+  "paste_after",
+  "select_mode",
+  "goto_line_start",
+  "normal_mode",
+]
+"C-k" = [
+  "extend_to_line_bounds",
+  "delete_selection",
+  "move_line_up",
+  "paste_before",
+  "flip_selections",
+]
+ 
+# Helix and yazi integration
+[keys.normal.C-e]
+# Open the file(s) in the current window
+y = ":sh zellij run -n Yazi -c -f -x 10%% -y 10%% --width 80%% --height 80%% -- bash ~/.config/helix/yazi-picker.sh open %{buffer_name}"
+# Open the file(s) in a vertical split
+v = ":sh zellij run -n Yazi -c -f -x 10%% -y 10%% --width 80%% --height 80%% -- bash ~/.config/helix/yazi-picker.sh vsplit %{buffer_name}"
+# Open the file(s) in a horizontal split
+h = ":sh zellij run -n Yazi -c -f -x 10%% -y 10%% --width 80%% --height 80%% -- bash ~/.config/helix/yazi-picker.sh hsplit %{buffer_name}"

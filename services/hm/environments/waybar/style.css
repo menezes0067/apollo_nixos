@@ -1,0 +1,113 @@
+* {
+  border: none;
+  border-radius: 0px;
+  font-family: "JetBrains Mono Nerd Font", monospace;
+  font-size: 14px;
+  min-height: 0;
+  padding: 0;
+  margin: 0;
+}
+
+/* =========================
+   WINDOW / BASE
+========================= */
+window#waybar {
+  background: #272e33; /* Everforest bg0_hard */
+  color: #d3c6aa;      /* fg */
+}
+
+/* =========================
+   WORKSPACES
+========================= */
+#workspaces {
+  padding: 0 6px;
+}
+
+#workspaces button {
+  padding: 2px 7px;
+  background: transparent;
+  color: #859289; /* grey */
+  transition: all 0.2s ease;
+}
+
+#workspaces button.active {
+  color: #a7c080; /* green */
+  border-bottom: 2px solid #a7c080;
+}
+
+#workspaces button:hover {
+  color: #e69875; /* orange */
+}
+
+/* =========================
+   SYSTEM MODULES
+========================= */
+#cpu {
+  color: #7fbbb3; /* aqua */
+}
+
+#memory {
+  color: #dbbc7f; /* yellow */
+}
+
+#battery {
+  color: #a7c080; /* green */
+}
+
+#pulseaudio {
+  color: #e69875; /* orange */
+}
+
+#backlight {
+  color: #d699b6; /* purple */
+}
+
+#clock {
+  color: #83c092; /* soft green */
+}
+
+#network {
+  color: #7daea3; /* blue aqua */
+}
+
+/* =========================
+   CUSTOM MODULES
+========================= */
+#custom-spotify {
+  color: #83c092;
+}
+
+#custom-current_app {
+  color: #7fbbb3;
+}
+
+#custom-datetime {
+  color: #a7c080;
+  font-size: 13px;
+}
+
+/* =========================
+   PADDING PADRÃO
+========================= */
+#cpu,
+#memory,
+#pulseaudio,
+#clock,
+#battery,
+#backlight,
+#network {
+  padding: 0 10px;
+  font-size: 13px;
+}
+
+/* =========================
+   TOOLTIP
+========================= */
+tooltip {
+  background-color: #2d353b; /* bg1 */
+  color: #d3c6aa;
+  border: 1px solid #475258;
+  padding: 6px;
+  font-family: "Fira Code", monospace;
+  font-size: 12px;
+}
