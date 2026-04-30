@@ -9,6 +9,7 @@
 
       ../../extras/bluetooth.nix
       ../../extras/flatpak.nix
+      ../../extras/gaming/gaming.nix
     ];
 
 
@@ -33,6 +34,12 @@
 
   hardware = {
     enableRedistributableFirmware = true;
+
+    graphics = {
+      enable = true;
+      driSupport =  true;
+      driSupport32Bit = true;
+    };
   };
 
   # Use latest kernel.

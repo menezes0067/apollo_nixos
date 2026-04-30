@@ -4,6 +4,7 @@ theme = "everblush"
 mouse = true
 end-of-line-diagnostics = "hint"
 line-number = "relative"
+cursorline = true
 
 [editor.statusline]
 left = ["mode", "spinner", "file-type"]

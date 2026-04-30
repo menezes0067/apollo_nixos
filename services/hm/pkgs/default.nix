@@ -22,6 +22,7 @@
     # common apps
     obsidian
     zathura
+    obs-studio    
     
   ];
 
