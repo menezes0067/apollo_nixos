@@ -15,7 +15,6 @@
       "helix" 
       "kitty"
       "zellij"
-      "swaync"
     ];
     
   in{
@@ -34,7 +33,6 @@
       waybar
       helix 
       bzmenu
-      swaynotificationcenter
     ]) ++ (with inputs.niri-flake.packages.${pkgs.stdenv.hostPlatform.system}; [
       xwayland-satellite-stable
     ]); 
