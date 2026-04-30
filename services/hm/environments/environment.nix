@@ -15,6 +15,7 @@
       "helix" 
       "kitty"
       "zellij"
+      "swaync"
     ];
     
   in{
