@@ -23,7 +23,7 @@
     obsidian
     zathura
     obs-studio    
-    
+    nitch
   ];
 
 

@@ -1,13 +1,11 @@
 { 
-  config, 
   pkgs, 
   ... 
   }: {
   imports =
     [ 
-      ./hardware-configuration.nix
-
       ../../extras/bluetooth.nix
+
       ../../extras/flatpak.nix
       ../../extras/gaming/gaming.nix
     ];
@@ -45,7 +43,6 @@
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  networking.hostName = "apollo"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
