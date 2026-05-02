@@ -38,6 +38,7 @@
         modules = [
           ./hosts/mene/configuration.nix
           ./hosts/mene/desktop/desktop.nix
+          ./hosts/mene/desktop/hardware-configuration.nix
         ];
       };
     };
