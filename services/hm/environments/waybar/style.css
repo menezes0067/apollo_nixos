@@ -6,88 +6,88 @@
   min-height: 0;
   padding: 0;
   margin: 0;
-}
+  }
 
 /* =========================
-   WINDOW / BASE
+WINDOW / BASE
 ========================= */
 window#waybar {
-  background: #272e33; /* Everforest bg0_hard */
-  color: #d3c6aa;      /* fg */
+background: #181616; /* kanagawa dragon bg */
+color: #c5c9c5;      /* fg */
 }
 
 /* =========================
-   WORKSPACES
+WORKSPACES
 ========================= */
 #workspaces {
-  padding: 0 6px;
+padding: 0 6px;
 }
 
 #workspaces button {
-  padding: 2px 7px;
-  background: transparent;
-  color: #859289; /* grey */
-  transition: all 0.2s ease;
+padding: 2px 7px;
+background: transparent;
+color: #727169; /* grey */
+transition: all 0.2s ease;
 }
 
 #workspaces button.active {
-  color: #a7c080; /* green */
-  border-bottom: 2px solid #a7c080;
+color: #7e9cd8; /* blue */
+border-bottom: 2px solid #7e9cd8;
 }
 
 #workspaces button:hover {
-  color: #e69875; /* orange */
+color: #b6927b; /* orange */
 }
 
 /* =========================
-   SYSTEM MODULES
+SYSTEM MODULES
 ========================= */
 #cpu {
-  color: #7fbbb3; /* aqua */
+color: #8ea4a2; /* aqua */
 }
 
 #memory {
-  color: #dbbc7f; /* yellow */
+color: #c4b28a; /* yellow */
 }
 
 #battery {
-  color: #a7c080; /* green */
+color: #8a9a7b; /* green */
 }
 
 #pulseaudio {
-  color: #e69875; /* orange */
+color: #b6927b; /* orange */
 }
 
 #backlight {
-  color: #d699b6; /* purple */
+color: #957fb8; /* purple */
 }
 
 #clock {
-  color: #83c092; /* soft green */
+color: #8a9a7b; /* soft green */
 }
 
 #network {
-  color: #7daea3; /* blue aqua */
+color: #7e9cd8; /* blue */
 }
 
 /* =========================
-   CUSTOM MODULES
+CUSTOM MODULES
 ========================= */
 #custom-spotify {
-  color: #83c092;
+color: #8a9a7b;
 }
 
 #custom-current_app {
-  color: #7fbbb3;
+color: #8ea4a2;
 }
 
 #custom-datetime {
-  color: #a7c080;
-  font-size: 13px;
+color: #8a9a7b;
+font-size: 13px;
 }
 
 /* =========================
-   PADDING PADRÃO
+PADDING PADRÃO
 ========================= */
 #cpu,
 #memory,
@@ -96,18 +96,18 @@ window#waybar {
 #battery,
 #backlight,
 #network {
-  padding: 0 10px;
-  font-size: 13px;
+padding: 0 10px;
+font-size: 13px;
 }
 
 /* =========================
-   TOOLTIP
+TOOLTIP
 ========================= */
 tooltip {
-  background-color: #2d353b; /* bg1 */
-  color: #d3c6aa;
-  border: 1px solid #475258;
-  padding: 6px;
-  font-family: "Fira Code", monospace;
-  font-size: 12px;
+background-color: #1f1f28; /* bg darker */
+color: #c5c9c5;
+border: 1px solid #2a2a37;
+padding: 6px;
+font-family: "Fira Code", monospace;
+font-size: 12px;
 }
