@@ -41,7 +41,7 @@
   };
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_cachyos-lto;
+    kernelPackages = pkgs.linuxPackages_latest;
   };
 
   # Configure network proxy if necessary
