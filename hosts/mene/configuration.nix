@@ -40,10 +40,9 @@
     };
   };
 
-  # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  boot = {
+    kernelPackages = pkgs.linuxPackages_cachyos-lto;
+  };
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";

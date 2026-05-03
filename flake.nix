@@ -7,6 +7,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nyx-loner.url = "github:lonerOrz/nyx-loner";
     niri-flake.url = "github:sodiboo/niri-flake";
     lazygit.url = "github:jesseduffield/lazygit";
   };
@@ -20,7 +21,15 @@
     ];
   };
   
-  outputs = { self, nixpkgs, home-manager, ... }@ inputs: {
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+    nyx-loner,
+    ...
+  }@ inputs:
+
+  {
     nixosConfigurations = {
       apollo = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
@@ -29,6 +38,8 @@
           ./hosts/mene/configuration.nix
           ./hosts/mene/laptop/laptop.nix
           ./hosts/mene/laptop/hardware-configuration.nix
+        
+          nyx-loner.nixosModules.default
         ];
       }; 
 
@@ -39,6 +50,8 @@
           ./hosts/mene/configuration.nix
           ./hosts/mene/desktop/desktop.nix
           ./hosts/mene/desktop/hardware-configuration.nix
+
+          nyx-loner.nixosModules.default
         ];
       };
     };
