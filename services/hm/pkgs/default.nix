@@ -18,6 +18,7 @@
     yazi
     jetbrains.idea
     lazygit
+    neovide
     
     # common apps
     obsidian
