@@ -41,9 +41,9 @@
           ./hosts/mene/laptop/hardware-configuration.nix
         
           {
-            environment = {
-              systemPackages = [ alejandra.defaultPackage.${system} ];
-            };
+            environment.systemPackages = [
+              alejandra.defaultPackage.${system}
+            ];
           }
         ];
       }; 
@@ -57,9 +57,9 @@
           ./hosts/mene/desktop/hardware-configuration.nix
 
           {
-            enviroment = {
-              systemPackages = [ alejandra.defaultPackage.${system} ];
-            };
+            envorinment.systemPackages = [
+              alejandra.defaultPackage.${system}
+            ];
           }
         ];
       };
