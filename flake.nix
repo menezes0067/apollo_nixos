@@ -1,9 +1,10 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nyx-loner.url = "github:lonerOrz/nyx-loner";
     niri-flake.url = "github:sodiboo/niri-flake";
     lazygit.url = "github:jesseduffield/lazygit";
+    alejandra.url = "github:kamadorueda/alejandra/4.0.0";
+    alejandra.inputs.nixpkgs.follows = "nixpkgs";
     
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -26,13 +27,12 @@
     self,
     nixpkgs,
     home-manager,
-    nyx-loner,
+    alejandra,
     ...
   }@ inputs:
-
   {
     nixosConfigurations = {
-      apollo = nixpkgs.lib.nixosSystem {
+      apollo = nixpkgs.lib.nixosSystem rec {
         specialArgs = {inherit inputs;};
         system = "x86_64-linux";
         modules = [
@@ -40,11 +40,15 @@
           ./hosts/mene/laptop/laptop.nix
           ./hosts/mene/laptop/hardware-configuration.nix
         
-          nyx-loner.nixosModules.default
+          {
+            environment = {
+              systemPackages = [ alejandra.defaultPackage.${system} ];
+            };
+          }
         ];
       }; 
 
-      apollopc = nixpkgs.lib.nixosSystem {
+      apollopc = nixpkgs.lib.nixosSystem rec {
         specialArgs = {inherit inputs;};
         system = "x86_64-linux";
         modules = [
@@ -52,7 +56,11 @@
           ./hosts/mene/desktop/desktop.nix
           ./hosts/mene/desktop/hardware-configuration.nix
 
-          nyx-loner.nixosModules.default
+          {
+            enviroment = {
+              systemPackages = [ alejandra.defaultPackage.${system} ];
+            };
+          }
         ];
       };
     };

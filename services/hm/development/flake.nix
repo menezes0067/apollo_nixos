@@ -5,7 +5,10 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   };
 
-  outputs = { self, nixpkgs }:
+  outputs = {
+    self,
+    nixpkgs
+  }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -13,15 +16,16 @@
       };
     in {
       devShells.${system} = {
-        fullstackdev = pkgs.mkShell {
+        fullstack = pkgs.mkShell {
           buildInputs = with pkgs; [
             nodejs
             bun
             typescript
+            typescript-language-server
           ];
         };
 
-        javadev = pkgs.mkShell {
+        java = pkgs.mkShell {
           buildInputs = with pkgs; [
             javaPackages.compiler.openjdk25
             maven
@@ -29,7 +33,7 @@
           ];
         };
 
-        mobiledev = pkgs.mkShell {
+        mobile = pkgs.mkShell {
           buildInputs = with pkgs; [
             flutter
             javaPackages.compiler.openjdk17
@@ -37,10 +41,11 @@
           ];
         };
 
-        rustdev = pkgs.mkShell {
+        rust = pkgs.mkShell {
           buildInputs = with pkgs; [
             rustc
             cargo
+            rust-analyzer
           ];
         };
       };
