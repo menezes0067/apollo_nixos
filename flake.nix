@@ -3,15 +3,13 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     niri-flake.url = "github:sodiboo/niri-flake";
     lazygit.url = "github:jesseduffield/lazygit";
-    alejandra.url = "github:kamadorueda/alejandra/4.0.0";
-    alejandra.inputs.nixpkgs.follows = "nixpkgs";
-    
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  
+
   nixConfig = {
     extra-substituters = [
       "https://niri.cachix.org"
@@ -22,55 +20,48 @@
       "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
     ];
   };
-  
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    alejandra,
-    ...
-  }@ inputs:
-  {
-    nixosConfigurations = {
-      apollo = nixpkgs.lib.nixosSystem rec {
-        specialArgs = {inherit inputs;};
-        system = "x86_64-linux";
-        modules = [
-          ./hosts/mene/configuration.nix
-          ./hosts/mene/laptop/laptop.nix
-          ./hosts/mene/laptop/hardware-configuration.nix
-        
-          {
-            environment.systemPackages = [
-              alejandra.defaultPackage.${system}
-            ];
-          }
-        ];
-      }; 
 
-      apollopc = nixpkgs.lib.nixosSystem rec {
-        specialArgs = {inherit inputs;};
-        system = "x86_64-linux";
-        modules = [
-          ./hosts/mene/configuration.nix
-          ./hosts/mene/desktop/desktop.nix
-          ./hosts/mene/desktop/hardware-configuration.nix
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      ...
+    }@inputs:
+      let
+        systemLinux = "x86_64-linux";
+      in
+    {
+      nixosConfigurations = {
+        apollo = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          system = systemLinux;
+          modules = [
+            ./hosts/mene/configuration.nix
+            ./hosts/mene/laptop/laptop.nix
+            ./hosts/mene/laptop/hardware-configuration.nix
 
-          {
-            envorinment.systemPackages = [
-              alejandra.defaultPackage.${system}
-            ];
-          }
+          ];
+        };
+
+        apollopc = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          system = systemLinux;
+          modules = [
+            ./hosts/mene/configuration.nix
+            ./hosts/mene/desktop/desktop.nix
+            ./hosts/mene/desktop/hardware-configuration.nix
+
+          ];
+        };
+      };
+
+      homeConfigurations."mene@apollo" = home-manager.lib.homeManagerConfiguration {
+        extraSpecialArgs = { inherit inputs; };
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        modules = [
+          ./hosts/mene/home.nix
         ];
       };
     };
- 
-    homeConfigurations."mene@apollo" = home-manager.lib.homeManagerConfiguration {
-      extraSpecialArgs = {inherit inputs;};
-      pkgs = nixpkgs.legacyPackages.x86_64-linux;
-      modules = [
-        ./hosts/mene/home.nix
-      ];
-    };
-  };
 }

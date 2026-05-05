@@ -5,16 +5,18 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   };
 
-  outputs = {
-    self,
-    nixpkgs
-  }:
+  outputs =
+    {
+      self,
+      nixpkgs,
+    }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
       };
-    in {
+    in
+    {
       devShells.${system} = {
         fullstack = pkgs.mkShell {
           buildInputs = with pkgs; [
@@ -49,5 +51,5 @@
           ];
         };
       };
-    }; 
+    };
 }

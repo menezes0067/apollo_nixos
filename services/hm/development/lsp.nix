@@ -9,6 +9,9 @@
       vscode-css-languageserver
       vscode-json-languageserver
       superhtml
+      
+     #formatters
+     nixfmt
     ];
   }
     
