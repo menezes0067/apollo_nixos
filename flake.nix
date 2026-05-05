@@ -28,14 +28,11 @@
       home-manager,
       ...
     }@inputs:
-      let
-        systemLinux = "x86_64-linux";
-      in
     {
       nixosConfigurations = {
         apollo = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
-          system = systemLinux;
+          system = "x86_64-linux";
           modules = [
             ./hosts/mene/configuration.nix
             ./hosts/mene/laptop/laptop.nix
@@ -46,7 +43,7 @@
 
         apollopc = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
-          system = systemLinux;
+          system = "x86_64-linux";
           modules = [
             ./hosts/mene/configuration.nix
             ./hosts/mene/desktop/desktop.nix
