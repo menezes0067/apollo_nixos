@@ -25,6 +25,9 @@
     zathura
     obs-studio    
     nitch
+    
+    pcsx2
+    heroic
   ];
 
 
