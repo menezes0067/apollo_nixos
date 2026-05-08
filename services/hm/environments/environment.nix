@@ -33,6 +33,8 @@
       waybar
       helix 
       bzmenu
+
+      gamescope
     ]) ++ (with inputs.niri-flake.packages.${pkgs.stdenv.hostPlatform.system}; [
       xwayland-satellite-stable
     ]); 

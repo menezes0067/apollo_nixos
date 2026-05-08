@@ -1,113 +1,171 @@
 * {
   border: none;
-  border-radius: 0px;
+  border-radius: 0;
   font-family: "JetBrains Mono Nerd Font", monospace;
-  font-size: 14px;
+  font-size: 10px;
   min-height: 0;
-  padding: 0;
   margin: 0;
-  }
+  padding: 0;
+
+  /* default geral (evita tudo virar azul sem querer) */
+  color: #d4be98;
+}
 
 /* =========================
-WINDOW / BASE
+BAR
 ========================= */
+
 window#waybar {
-background: #181616; /* kanagawa dragon bg */
-color: #c5c9c5;      /* fg */
+  background-color: #181616;
+  color: #d4be98;
 }
 
 /* =========================
 WORKSPACES
 ========================= */
+
 #workspaces {
-padding: 0 6px;
+  background-color: #1e1b1b;
+  margin: 6px;
+  padding: 4px;
+  border-radius: 12px;
+  border: 1px solid #2e2a2a;
 }
 
 #workspaces button {
-padding: 2px 7px;
-background: transparent;
-color: #727169; /* grey */
-transition: all 0.2s ease;
-}
-
-#workspaces button.active {
-color: #7e9cd8; /* blue */
-border-bottom: 2px solid #7e9cd8;
+  color: #928374;
+  padding: 4px 10px;
+  margin: 2px;
+  border-radius: 9px;
+  transition: all 0.18s ease;
 }
 
 #workspaces button:hover {
-color: #b6927b; /* orange */
+  background-color: #2e2a2a;
+  color: #c87941;
+}
+
+#workspaces button.active {
+  background-color: #c87941;
+  color: #181616;
+}
+
+#workspaces button.empty {
+  color: #5f564d;
 }
 
 /* =========================
-SYSTEM MODULES
+MODULE BOXES
 ========================= */
-#cpu {
-color: #8ea4a2; /* aqua */
-}
 
-#memory {
-color: #c4b28a; /* yellow */
-}
-
-#battery {
-color: #8a9a7b; /* green */
-}
-
-#pulseaudio {
-color: #b6927b; /* orange */
-}
-
-#backlight {
-color: #957fb8; /* purple */
-}
-
-#clock {
-color: #8a9a7b; /* soft green */
-}
-
-#network {
-color: #7e9cd8; /* blue */
-}
-
-/* =========================
-CUSTOM MODULES
-========================= */
-#custom-spotify {
-color: #8a9a7b;
-}
-
-#custom-current_app {
-color: #8ea4a2;
-}
-
-#custom-datetime {
-color: #8a9a7b;
-font-size: 13px;
-}
-
-/* =========================
-PADDING PADRÃO
-========================= */
-#cpu,
-#memory,
+#custom-current_app,
+#custom-spotify,
+#network,
 #pulseaudio,
-#clock,
-#battery,
 #backlight,
-#network {
-padding: 0 10px;
-font-size: 13px;
+#battery,
+#clock,
+#tray {
+  background-color: #1e1b1b;
+  padding: 8px 12px;
+  margin: 4px 6px;
+  border-radius: 12px;
+  border: 1px solid #2e2a2a;
+  transition: all 0.2s ease;
+}
+
+/* hover geral */
+#custom-current_app:hover,
+#custom-spotify:hover,
+#network:hover,
+#pulseaudio:hover,
+#backlight:hover,
+#battery:hover,
+#clock:hover,
+#tray:hover {
+  background-color: #2e2a2a;
 }
 
 /* =========================
-TOOLTIP
+MODULE COLORS (KAPE ACCENTS)
 ========================= */
+
+/* app */
+#custom-current_app {
+  color: #e7bb5c;
+}
+
+/* spotify */
+#custom-spotify {
+  color: #b4c76e;
+}
+
+/* network (azul controlado só aqui) */
+#network {
+  color: #7b8fd4;
+}
+
+/* pulseaudio */
+#pulseaudio {
+  color: #c87941;
+}
+
+#pulseaudio.muted {
+  color: #928374;
+}
+
+/* backlight */
+#backlight {
+  color: #b06880;
+}
+
+/* battery */
+#battery {
+  color: #689d8a;
+}
+
+#battery.charging {
+  color: #b4c76e;
+}
+
+#battery.warning {
+  color: #e7bb5c;
+}
+
+#battery.critical {
+  color: #b53535;
+}
+
+/* clock */
+#clock {
+  color: #d4be98;
+  font-weight: bold;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* tray */
+#tray {
+  padding: 8px;
+}
+
+/* network disconnected */
+#network.disconnected {
+  color: #b53535;
+}
+
+/* =========================
+TOOLTIPS
+========================= */
+
 tooltip {
-background-color: #1f1f28; /* bg darker */
-color: #c5c9c5;
-border: 1px solid #2a2a37;
-padding: 6px;
-font-family: "Fira Code", monospace;
-font-size: 12px;
+  background-color: #1e1b1b;
+  color: #d4be98;
+  border: 1px solid #2e2a2a;
+  border-radius: 12px;
+  padding: 10px;
+}
+
+tooltip label {
+  padding: 2px;
 }
