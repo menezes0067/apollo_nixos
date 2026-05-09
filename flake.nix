@@ -4,6 +4,7 @@
     niri-flake.url = "github:sodiboo/niri-flake";
     lazygit.url = "github:jesseduffield/lazygit";
     hyprland.url = "github:hyprwm/Hyprland";
+    flake-parts.url = "github:hercules-ci/flake-parts";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -24,44 +25,10 @@
     ];
   };
 
-  outputs =
-    {
-      self,
-      nixpkgs,
-      home-manager,
-      ...
-    }@inputs:
-    {
-      nixosConfigurations = {
-        apollo = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          system = "x86_64-linux";
-          modules = [
-            ./hosts/mene/configuration.nix
-            ./hosts/mene/laptop/laptop.nix
-            ./hosts/mene/laptop/hardware-configuration.nix
-
-          ];
-        };
-
-        apollopc = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          system = "x86_64-linux";
-          modules = [
-            ./hosts/mene/configuration.nix
-            ./hosts/mene/desktop/desktop.nix
-            ./hosts/mene/desktop/hardware-configuration.nix
-
-          ];
-        };
-      };
-
-      homeConfigurations."mene@apollo" = home-manager.lib.homeManagerConfiguration {
-        extraSpecialArgs = { inherit inputs; };
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        modules = [
-          ./hosts/mene/home.nix
-        ];
-      };
+  outputs = { flake-parts, home-manager, nixpkgs, ... }@inputs:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      imports = [
+        ./outputs.nix
+      ];
     };
 }
