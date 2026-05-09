@@ -7,7 +7,7 @@
 {
   flake = {
     nixosConfigurations = {
-      apollo = lib.nixosSystem {
+      apollo = inputs.nixpkgs.lib.nixosSystem {
         modules = [
           ./hosts/mene/configuration.nix
           ./hosts/mene/laptop/laptop.nix
@@ -15,7 +15,7 @@
         ];
       };
 
-      apollopc = lib.nixosSystem {
+      apollopc = inputs.nixpkgs.lib.nixosSystem {
         modules = [
           ./hosts/mene/configuration.nix
           ./hosts/mene/desktop/desktop.nix
