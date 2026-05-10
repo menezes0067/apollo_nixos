@@ -3,53 +3,50 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    flake-parts.url = "github:hercules-ci/flake-parts";
   };
 
   outputs =
-    {
-      self,
-      nixpkgs,
-    }:
-    let
-      system = "x86_64-linux";
-      pkgs = import nixpkgs {
-        inherit system;
-      };
-    in
-    {
-      devShells.${system} = {
-        fullstack = pkgs.mkShell {
-          buildInputs = with pkgs; [
-            nodejs
-            bun
-            typescript
-            typescript-language-server
-          ];
-        };
+    { self, flake-parts, ... }@inputs:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      perSystem =
+        { pkgs, ... }:
+        {
+          devShells = {
+            typescript = pkgs.mkShell {
+              packages = with pkgs; [
+                nodejs
+                bun
+                typescript
+                typescript-language-server
+              ];
+            };
 
-        java = pkgs.mkShell {
-          buildInputs = with pkgs; [
-            javaPackages.compiler.openjdk25
-            maven
-            gradle
-          ];
-        };
+            java = pkgs.mkShell {
+              packages = with pkgs; [
+                javaPackages.compiler.openjdk21
+                maven
+                gradle
+              ];
+            };
 
-        mobile = pkgs.mkShell {
-          buildInputs = with pkgs; [
-            flutter
-            javaPackages.compiler.openjdk17
-            android-tools
-          ];
-        };
+            flutter = pkgs.mkShell {
+              packages = with pkgs; [
+                javaPackages.compiler.openjdk17
+                flutter
+                android-tools
+              ];
+            };
 
-        rust = pkgs.mkShell {
-          buildInputs = with pkgs; [
-            rustc
-            cargo
-            rust-analyzer
-          ];
+            rust = pkgs.mkShell {
+              packages = with pkgs; [
+                rustc
+                cargo
+                rust-analyzer
+              ];
+            };
+          };
         };
-      };
+      systems = [ "x86_64-linux" ];
     };
 }
