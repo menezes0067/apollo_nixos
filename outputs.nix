@@ -5,10 +5,6 @@
   ...
 }:
 {
-  imports = [
-    inputs.wrappers.flakeModules.wrappers    
-  ]; 
-
   flake = {
     nixosConfigurations = {
       apollo = inputs.nixpkgs.lib.nixosSystem {
