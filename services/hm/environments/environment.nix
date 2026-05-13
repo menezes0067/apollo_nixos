@@ -15,6 +15,7 @@
       "helix" 
       "kitty"
       "zellij"
+      "nvim"
     ];
     
   in{
@@ -33,6 +34,7 @@
       waybar
       helix 
       bzmenu
+      neovim
 
       gamescope
     ]) ++ (with inputs.niri-flake.packages.${pkgs.stdenv.hostPlatform.system}; [
