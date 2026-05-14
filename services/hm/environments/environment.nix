@@ -15,7 +15,6 @@
       "helix" 
       "kitty"
       "zellij"
-      "nvim"
     ];
     
   in{
@@ -23,6 +22,7 @@
   home.packages =  
     (with pkgs; [
       nautilus
+      unzip
       networkmanagerapplet
       xdg-desktop-portal-gtk
       xdg-user-dirs
@@ -34,7 +34,8 @@
       waybar
       helix 
       bzmenu
-      neovim
+      piper
+      
 
       gamescope
     ]) ++ (with inputs.niri-flake.packages.${pkgs.stdenv.hostPlatform.system}; [

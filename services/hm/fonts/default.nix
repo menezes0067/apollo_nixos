@@ -25,6 +25,7 @@
     nerd-fonts.iosevka
     nerd-fonts.caskaydia-mono
     nerd-fonts.caskaydia-cove
+    nerd-fonts.fira-code
     nerd-fonts.victor-mono
     inter
     noto-fonts

@@ -9,7 +9,7 @@
     ../../services/hm/pkgs/default.nix
   
     ../../services/hm/environments/environment.nix
-    ../../services/hm/development/lsp.nix
+    ../../services/development/lsp.nix
   ];
 
   home = {
