@@ -18,6 +18,7 @@
     yazi
     jetbrains.idea
     lazygit
+    scrcpy
     neovide
     
     # common apps

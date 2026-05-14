@@ -125,7 +125,7 @@
   users.users.mene = {
     isNormalUser = true;
     description = "mene";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "adbusers"];
     packages = with pkgs; [
       kdePackages.kate
     ];
@@ -137,6 +137,10 @@
     };
 
     niri = {
+      enable = true;
+    };
+
+    adb = {
       enable = true;
     };
   };
