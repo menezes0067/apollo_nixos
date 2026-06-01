@@ -2,12 +2,11 @@
   border: none;
   border-radius: 0;
   font-family: "JetBrains Mono Nerd Font", monospace;
-  font-size: 10px;
+  font-size: 9px;
   min-height: 0;
   margin: 0;
   padding: 0;
 
-  /* default geral (evita tudo virar azul sem querer) */
   color: #d4be98;
 }
 
@@ -18,6 +17,19 @@ BAR
 window#waybar {
   background-color: #181616;
   color: #d4be98;
+
+  min-height: 10px;
+}
+
+window#waybar.top {
+  margin: 0;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+  margin: 0;
+  padding: 0;
 }
 
 /* =========================
@@ -26,17 +38,19 @@ WORKSPACES
 
 #workspaces {
   background-color: #1e1b1b;
+
   margin: 6px;
   padding: 4px;
-  border-radius: 12px;
+
   border: 1px solid #2e2a2a;
 }
 
 #workspaces button {
   color: #928374;
+
   padding: 4px 10px;
   margin: 2px;
-  border-radius: 9px;
+
   transition: all 0.18s ease;
 }
 
@@ -67,14 +81,17 @@ MODULE BOXES
 #clock,
 #tray {
   background-color: #1e1b1b;
+
   padding: 8px 12px;
-  margin: 4px 6px;
-  border-radius: 12px;
+  margin: 6px 4px;
+
   border: 1px solid #2e2a2a;
-  transition: all 0.2s ease;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
 }
 
-/* hover geral */
 #custom-current_app:hover,
 #custom-spotify:hover,
 #network:hover,
@@ -87,25 +104,25 @@ MODULE BOXES
 }
 
 /* =========================
-MODULE COLORS (KAPE ACCENTS)
+COLORS
 ========================= */
 
-/* app */
 #custom-current_app {
   color: #e7bb5c;
 }
 
-/* spotify */
 #custom-spotify {
   color: #b4c76e;
 }
 
-/* network (azul controlado só aqui) */
 #network {
   color: #7b8fd4;
 }
 
-/* pulseaudio */
+#network.disconnected {
+  color: #b53535;
+}
+
 #pulseaudio {
   color: #c87941;
 }
@@ -114,12 +131,10 @@ MODULE COLORS (KAPE ACCENTS)
   color: #928374;
 }
 
-/* backlight */
 #backlight {
   color: #b06880;
 }
 
-/* battery */
 #battery {
   color: #689d8a;
 }
@@ -136,22 +151,17 @@ MODULE COLORS (KAPE ACCENTS)
   color: #b53535;
 }
 
-/* clock */
 #clock {
   color: #d4be98;
+
   font-weight: bold;
-  padding-top: 10px;
-  padding-bottom: 10px;
+
+  padding-left: 14px;
+  padding-right: 14px;
 }
 
-/* tray */
 #tray {
   padding: 8px;
-}
-
-/* network disconnected */
-#network.disconnected {
-  color: #b53535;
 }
 
 /* =========================
@@ -160,9 +170,11 @@ TOOLTIPS
 
 tooltip {
   background-color: #1e1b1b;
+
   color: #d4be98;
+
   border: 1px solid #2e2a2a;
-  border-radius: 12px;
+
   padding: 10px;
 }
 

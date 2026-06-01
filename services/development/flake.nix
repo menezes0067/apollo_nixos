@@ -35,6 +35,7 @@
                 javaPackages.compiler.openjdk17
                 flutter
                 android-tools
+                firebase-tools
               ];
             };
 

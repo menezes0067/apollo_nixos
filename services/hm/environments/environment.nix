@@ -15,6 +15,7 @@
       "helix" 
       "kitty"
       "zellij"
+      "hypr"
     ];
     
   in{
@@ -35,25 +36,16 @@
       helix 
       bzmenu
       piper
-      
+      swappy
+      grim
+      slurp      
 
+      cava
+      cmatrix
       gamescope
-    ]) ++ (with inputs.niri-flake.packages.${pkgs.stdenv.hostPlatform.system}; [
-      xwayland-satellite-stable
-    ]); 
-
-  xdg.portal = {
-    enable = true;
-
-    configPackages = [
-      inputs.niri-flake.packages.${pkgs.stdenv.hostPlatform.system}.niri-stable
-    ];
-
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gnome
-    ];
-  };
-
+    ]);
+     
+  
   xdg.configFile = builtins.listToAttrs (map (name: {
     name = name;
     value = {

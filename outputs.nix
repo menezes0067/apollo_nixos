@@ -8,6 +8,7 @@
   flake = {
     nixosConfigurations = {
       apollo = inputs.nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
         modules = [
           ./hosts/mene/configuration.nix
           ./hosts/mene/laptop/laptop.nix

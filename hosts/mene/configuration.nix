@@ -1,5 +1,6 @@
 { 
-  pkgs, 
+  pkgs,
+  inputs, 
   ... 
   }: {
   imports =
@@ -79,9 +80,6 @@
     displayManager = {
       sddm = {
         enable = true;
-        wayland = {
-          enable = true;
-        };
       };
     };
 
@@ -129,15 +127,35 @@
     packages = with pkgs; [
       kdePackages.kate
     ];
+    shell = pkgs.zsh;
   };
 
+
+  
   programs = {
     firefox = {
       enable = true;
     };
 
-    niri = {
+    hyprland = {
       enable = true;
+      xwayland = {
+        enable = true;
+      };
+      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+      portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    };
+
+    zsh = {
+      enable = true;
+      shellAliases = {
+        nix-config= "cd /etc/nixos";
+        nix-development = "cd /etc/nixos/services/development";
+      };
+      ohMyZsh = {
+        enable = true;
+        theme = "fino";
+      };
     };
   };
 

@@ -16,7 +16,8 @@
     username = "mene";
     homeDirectory = "/home/mene";
     stateVersion = "25.11";
-  };
+    
+ };
 
   programs = {
     home-manager = {
